@@ -42,24 +42,17 @@ for ($letter = 'a', $letter !='aa'; $letter <= 'z'; $letter++) {
 }
 print_r($arr);
 
-//ex6,
+//ex6, combineNames function is redundant, $arr array was not used, adding parameters on combineNames
 $arr = [];
-
-function combineNames($str1, $str2) {
+function combineNames($str1 = "", $str2 = "") {
     $params = [$str1, $str2];
     foreach($params as $param) {
-          array_push($arr, param) ;
-
+        if ($param == "") {
+            $param = randomHeroName();
+            array_push($arr, $param) ;
+        }
     }
-    echo implode($params, " - ");
-}
-//combineNames();
-function randomGenerate($arr, $amount) {
-    for ($i = $amount; $i > 0; $i--) {
-        array_push($arr, randomHeroName());
-    }
-
-    return $amount;
+    return implode($params, " - ");
 }
 
 
@@ -67,18 +60,13 @@ function randomHeroName()
 {
     $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
     $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
-    
-  //  $randname = array_rand($hero_firstnames,1 )."-".array_rand($hero_lastnames,1);
-    $randFirstName = array_rand($hero_firstnames,1 );
-    $randLastname = array_rand($hero_lastnames,1);
-   // $randFirstName = $hero_firstnames[$randFirstName];
-    //$randLastname = $hero_lastnames[$randLastname];
-    $randname = $hero_firstnames[$randFirstName]."-".$hero_lastnames[$randLastname];
-    return $randname;
+    $heroes = [$hero_firstnames, $hero_lastnames];
+    $randname = $heroes[rand(0,count($heroes)-1)][rand(0, 10)];
 
+    return $randname;
 }
 
-echo "Here is the name: " . randomHeroName();
+echo "Here is the name: " . combineNames(randomHeroName(),randomHeroName());
 
 ?>
 
