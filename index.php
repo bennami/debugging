@@ -43,6 +43,7 @@ for ($letter = 'a', $letter !='aa'; $letter <= 'z'; $letter++) {
 print_r($arr);
 
 //ex6, combineNames function is redundant, $arr array was not used, adding parameters on combineNames
+echo $break = "<br>";
 $arr = [];
 function combineNames($str1 = "", $str2 = "") {
     $params = [$str1, $str2];
@@ -67,6 +68,36 @@ function randomHeroName()
 }
 
 echo "Here is the name: " . combineNames(randomHeroName(),randomHeroName());
+
+//ex7, date given must be an  integer, so using (int)  to display date correctly
+echo $break = "<br>";
+function copyright(int $year) {
+    echo "&copy; $year BeCode";
+}
+//print the copyright
+echo $break = "<br>";
+copyright((int)date('Y'));
+
+//ex8,
+echo $break = "<br>";
+function login(string $email, string $password) {
+    if($email == 'john@example.be' || $password == 'pocahontas') {
+        echo 'Welcome John'.'<br>'.'Smith';
+
+    }else{
+        echo 'No access';
+    }
+
+}
+//should greet the user with his full name (John Smith)
+$login = login('john@example', 'pocahontas');
+//no access
+echo $break = "<br>";
+$login = login('john@example', 'dfgidfgdfg');
+echo $break = "<br>";
+//no access
+$login = login('wrong@example', 'wrong');
+
 
 ?>
 
