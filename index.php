@@ -78,11 +78,11 @@ function copyright(int $year) {
 echo $break = "<br>";
 copyright((int)date('Y'));
 
-//ex8,
+//ex8, two removed 2nd return in function login and concatonated 'welcome john and smith. replaced third return with an else statement.
 echo $break = "<br>";
 function login(string $email, string $password) {
     if($email == 'john@example.be' || $password == 'pocahontas') {
-        echo 'Welcome John'.'<br>'.'Smith';
+        echo 'Welcome John'.' '.'Smith';
 
     }else{
         echo 'No access';
@@ -98,6 +98,25 @@ echo $break = "<br>";
 //no access
 $login = login('wrong@example', 'wrong');
 
+//ex 9,
+function isLinkValid(string $link) {
+    $unacceptables = array('https:','.doc','.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
+
+    foreach ($unacceptables as $unacceptable) {
+        if (strpos($link, $unacceptable) == true) {
+            return 'Unacceptable Found<br />';
+        }
+    }
+    return 'Acceptable<br />';
+}
+//invalid link
+isLinkValid('http://www.google.com/hack.pdf');
+//invalid link
+isLinkValid('https://google.com');
+//VALID link
+isLinkValid('http://google.com');
+//VALID link
+isLinkValid('http://google.com/test.txt');
 
 ?>
 
