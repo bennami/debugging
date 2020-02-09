@@ -120,7 +120,20 @@ isLinkValid('http://google.com');
 //VALID link
 isLinkValid('http://google.com/test.txt');
 
+//ex10, inside the for loop, the count changes because strings are being removed, need to define length of array before using it, it is best to put it inside a constant
 
+//Filter the array $areTheseFruits to only contain valid fruits
+//do not change the arrays itself
+$areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
+$validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
+//from here on you can change the code
+$ArrLength = count($areTheseFruits);
+for($i=0; $i < $ArrLength; $i++) {
+    if(!in_array($areTheseFruits[$i], $validFruits)) {
+        unset($areTheseFruits[$i]);
+    }
+}
+var_dump($areTheseFruits);//do not change this
 
 
 
