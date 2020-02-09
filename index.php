@@ -97,17 +97,19 @@ $login = login('john@example', 'dfgidfgdfg');
 echo $break = "<br>";
 //no access
 $login = login('wrong@example', 'wrong');
+echo $break = "<br>";
 
-//ex 9,
+//ex 9, strpos looks for similarities of string inside array i guess? it only returns FALSE and not true. so i changed true to !== false. Also needed to echo string, not sure if i need to echo tho..
 function isLinkValid(string $link) {
     $unacceptables = array('https:','.doc','.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
 
     foreach ($unacceptables as $unacceptable) {
-        if (strpos($link, $unacceptable) == true) {
-            return 'Unacceptable Found<br />';
+        if (strpos($link, $unacceptable) !== false) {
+            echo 'Unacceptable Found<br>';
+            return;
         }
     }
-    return 'Acceptable<br />';
+    echo 'Acceptable<br />';
 }
 //invalid link
 isLinkValid('http://www.google.com/hack.pdf');
@@ -117,6 +119,10 @@ isLinkValid('https://google.com');
 isLinkValid('http://google.com');
 //VALID link
 isLinkValid('http://google.com/test.txt');
+
+
+
+
 
 ?>
 
